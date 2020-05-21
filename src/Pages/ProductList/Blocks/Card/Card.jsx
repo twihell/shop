@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { Card as CardComponent } from 'antd'; // alias - renaming component to resolve name similarity conflict
 import ReactCardFlip from 'react-card-flip';
 import { Link } from 'react-router-dom';
-import { TextBold } from './styles';
+import { Typography, Button } from 'antd';
+import { PriceAndButton } from './styles';
 
+const { Title } = Typography;
 const { Meta } = CardComponent;
 
 
@@ -23,7 +25,11 @@ export const Card = ({ el }) => {
                 onClick={onChangeFlipped}
             >
                 <Link to="/details"><Meta title={el.name} /></Link>
-                <TextBold>hello</TextBold>
+                <PriceAndButton>
+                <Title level={3} style={{ paddingTop: "10px"}}>{el.price + ' ₴'}</Title>
+                <Button type="primary" style={{ top: "10px"}}>Add to cart</Button>
+                </PriceAndButton>
+                
             </CardComponent>
 
             <CardComponent
